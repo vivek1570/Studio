@@ -16,8 +16,8 @@ Todos
     -DONE Log in  
 
     - DONE Project list page  
-    - Create project  
-    - Project detail page  
+    - DONE Create project  
+    - DONE Project detail page  
     - Edit project  
     - Delete project  
 

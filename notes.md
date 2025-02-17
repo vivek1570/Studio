@@ -14,3 +14,18 @@ via {% extends "core/base.html" %}
 -
 
 - after updateing views then should immedialtly take care of the urls.py also
+
+- we can use like below, where the dictionary indicating that we can pass values to the html file
+
+```python
+
+def projects(request):
+    projects=Project.objects.filter(created_by=request.user)
+    return render(request,'project/projects.html',{
+        'my_projects':projects
+    })
+
+
+```
+
+- you can add a delete button in that by passing id as paramenetr to the url
