@@ -35,9 +35,8 @@ def add_project(request):
 def delete_project(request,project_id):
     project=get_object_or_404(Project,id=project_id)
 
-    if request.method=="POST":
-        project.delete()
-        return redirect('/projects/')
+    project.delete()
+
     return redirect('/projects/')
 
 
@@ -46,5 +45,24 @@ def project(request,pk):
     project=Project.objects.filter(created_by=request.user).get(pk=pk)
 
     return render(request,'project/project.html',{
+        'project':project
+    })
+
+@login_required
+def edit_proejct(request,pk):
+    project=Project.objects.filter(created_by=request.user).get(pk=pk)
+
+    if request.method=='POST':
+        name=request.POST.get('name','')
+        description=request.POST.get('description','')
+
+        if name:
+            project.name=name
+            project.description=description
+            project.save()
+
+            return redirect('/projects/')
+    
+    return render(request,'project/edit.html',{
         'project':project
     })

@@ -5,6 +5,20 @@
   Add Todolist
 </a>
 
+<a
+  href="{% url 'project:edit_project' project.id %}"
+  class="py-4 px-8 bg-sky-600 text-white inline-block"
+>
+  Edit
+</a>
+
+<a
+  href="{% url 'project:delete_project' project.id %}"
+  class="py-4 px-8 bg-sky-600 text-white inline-block"
+>
+  Delete
+</a>
+
 <div class="mt-6 grid grid-cols-4 gap-4">
   {% for todolist in todolists %}
   <div class="py-6 px-6 bg-slate-200 mb-4 rounded-lg shadow-md relative">
@@ -16,4 +30,14 @@
   {% endfor %}
 </div>
 
-{% endblock %}
+{% comment %}
+<form action="{% url 'project:edit_project' project.id %}" method="get">
+  {% csrf_token %}
+  <button
+    type="submit"
+    class="bg-red-500 text-white px-5 py-3 text-xs rounded hover:bg-red-600"
+  >
+    Edit
+  </button>
+</form>
+{% endcomment %} {% endblock %}

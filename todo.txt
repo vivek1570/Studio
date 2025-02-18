@@ -15,11 +15,11 @@ Todos
     -DONE Sign up  
     -DONE Log in  
 
-    - DONE Project list page  
-    - DONE Create project  
-    - DONE Project detail page  
-    - Edit project  
-    - Delete project  
+    -DONE Project list page  
+    -DONE Create project  
+    -DONE Project detail page  
+    -DONE Edit project  
+    -DONE Delete project  
 
     - Create todo list  
     - Todo list detail page  
