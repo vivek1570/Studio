@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import Project
+from todolist.models import Todo
 
 # Create your views here.
 
@@ -66,3 +67,5 @@ def edit_proejct(request,pk):
     return render(request,'project/edit.html',{
         'project':project
     })
+
+
