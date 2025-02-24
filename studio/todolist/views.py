@@ -11,6 +11,7 @@ from project.models import Project
 def add_todo(request,project_id):
     project=Project.objects.filter(created_by=request.user).get(pk=project_id)
 
+
     if request.method=='POST':
         name=request.POST.get('name','')
         description=request.POST.get('description','')
@@ -27,3 +28,15 @@ def add_todo(request,project_id):
 #     todos=Todo.objects.filter(project_id=project_id)
 
 #     return render(request,'')
+
+def detail(request,project_id,pk):
+    proejct=Project.objects.filter(created_by=request.user).get(pk=project_id)
+    todo=Todo.objects.filter(project=proejct).get(pk=pk)
+
+
+    return render(request,'todolist/detail.html',{
+        'todo':todo,
+        'project':proejct
+    })
+
+
