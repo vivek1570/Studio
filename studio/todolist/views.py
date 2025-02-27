@@ -30,13 +30,34 @@ def add_todo(request,project_id):
 #     return render(request,'')
 
 def detail(request,project_id,pk):
-    proejct=Project.objects.filter(created_by=request.user).get(pk=project_id)
-    todo=Todo.objects.filter(project=proejct).get(pk=pk)
+    project=Project.objects.filter(created_by=request.user).get(pk=project_id)
+    todo=Todo.objects.filter(project=project).get(pk=pk)
 
 
     return render(request,'todolist/detail.html',{
         'todo':todo,
-        'project':proejct
+        'project':project
     })
 
 
+def edit(request,project_id,pk):
+    project=Project.objects.filter(created_by=request.user).get(pk=project_id)
+    todo=Todo.objects.filter(project=project).get(pk=pk)
+
+    return render(request,'todolist/edit.html/',{
+            'project':project,
+            'todo':todo
+        })
+
+
+    # if request.method=='POST':
+    #     name=request.POST.get('name','')
+    #     description=request.POST.get('description','')
+
+    #     if name:
+    #         todo.name=name
+    #         todo.description=description
+    #         todo.save()
+
+    #         return redirect('todolist/detail.html/')
+        
